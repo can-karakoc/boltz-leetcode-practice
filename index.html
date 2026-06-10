@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boltz Mini-LeetCode</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">Boltz Mini-LeetCode</div>
+      <div class="sub">Custom Boltz Track</div>
+      <div id="problemList" class="problem-list"></div>
+    </aside>
+
+    <main class="main">
+      <section class="prompt-pane">
+        <div class="meta" id="counter">Custom Boltz Track: Question 1 / 6</div>
+        <h1 id="title">Loading...</h1>
+        <div class="badges">
+          <span id="difficulty"></span>
+          <span id="pattern"></span>
+        </div>
+        <h3>Prompt</h3>
+        <p id="prompt"></p>
+        <h3>How to use</h3>
+        <ol>
+          <li>Write your solution in the editor.</li>
+          <li>Click <b>Run Examples</b> for public tests.</li>
+          <li>Click <b>Submit</b> for all tests.</li>
+        </ol>
+        <div class="hint">Your code auto-saves in this browser. “Save .py” also writes it into the local <code>submissions/</code> folder.</div>
+      </section>
+
+      <section class="code-pane">
+        <div class="toolbar">
+          <div class="toolbar-left">
+            <button id="runBtn">Run Examples</button>
+            <button id="submitBtn" class="primary">Submit</button>
+            <button id="resetBtn">Reset Starter</button>
+            <button id="saveBtn">Save .py</button>
+            <button id="undoBtn" title="Cmd/Ctrl+Z">Undo</button>
+            <button id="redoBtn" title="Cmd/Ctrl+Shift+Z">Redo</button>
+            <button id="commentBtn" title="Cmd/Ctrl+/">Toggle Comment</button>
+          </div>
+          <div class="editor-status">
+            <span id="languageBadge">Python</span>
+            <span id="cursorBadge">Ln 1, Col 1</span>
+          </div>
+        </div>
+        <div class="editor-shell" id="editorShell">
+          <pre id="lineNumbers" aria-hidden="true"></pre>
+          <pre id="highlight" aria-hidden="true"></pre>
+          <textarea id="editor" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off"></textarea>
+        </div>
+        <div id="results" class="results">Results will appear here.</div>
+      </section>
+    </main>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

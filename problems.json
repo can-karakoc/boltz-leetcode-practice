@@ -1,0 +1,101 @@
+[
+  {
+    "slug": "top_k_candidates_per_target",
+    "title": "Top K Candidates Per Target",
+    "track": "Custom Boltz",
+    "difficulty": "Medium",
+    "pattern": "Hash map grouping + sorting / heap",
+    "function": "top_k_candidates_per_target",
+    "starter": "def top_k_candidates_per_target(candidates, k):\n    # Return {target_id: [candidate_id, ...]}\n    pass\n",
+    "prompt": "Given candidate model results, return the top k candidate IDs for each target_id. Higher score is better. If scores tie, earlier created_at wins. If a target has fewer than k candidates, return all of them."
+  },
+  {
+    "slug": "can_finish_courses",
+    "track": "General",
+    "difficulty": "Medium",
+    "pattern": "Graph / Topological Sort (Kahn's Algorithm)",
+    "function": "can_finish_courses",
+    "starter": "def can_finish_courses(num_courses, prerequisites):\n    \"\"\"\n    Determine if it is possible to complete all courses given the number of courses and a list of prerequisite pairs.\n\n    Args:\n        num_courses (int): The total number of courses labeled from 0 to num_courses - 1.\n        prerequisites (List[List[int]]): Each pair [a, b] indicates that course b must be completed before course a.\n\n    Returns:\n        bool: True if all courses can be finished, False otherwise.\n\n    Hint:\n        Build a directed graph from the prerequisites and perform a topological sort using Kahn's algorithm.\n        Maintain an in-degree count for each course, start with courses that have no prerequisites and iteratively\n        remove them from the graph, decrementing in-degrees of dependent courses. If you can process all courses\n        without encountering a cycle, return True. Otherwise, return False.\n    \"\"\"\n    # TODO: implement topological sort or cycle detection to determine if all courses can be completed\n    pass\n",
+    "prompt": "Given the total number of courses and a list of prerequisite pairs, determine if all courses can be completed.\nEach prerequisite pair [a, b] means you must complete course b before taking course a. The goal is to check if the dependency graph is acyclic, which would allow a valid ordering of courses. If there is a cycle, return False.\n\nFor example:\n1. Input: num_courses = 2, prerequisites = [[1, 0]]\n   Output: True\n   Explanation: You can finish course 0 then take course 1.\n\n2. Input: num_courses = 2, prerequisites = [[1, 0], [0, 1]]\n   Output: False\n   Explanation: There is a cycle (0 -> 1 -> 0), so it's impossible to complete both courses.\n\nYou can use a topological sort approach (Kahn's algorithm) or cycle detection using DFS. Maintain an in-degree array for each course, initialize a queue with courses having zero in-degree, process courses while decrementing the in-degree of dependent courses, and verify if all courses can be processed.\n"
+  },
+  {
+    "slug": "total_compute_time",
+    "title": "Total Compute Time",
+    "track": "Custom Boltz",
+    "difficulty": "Medium",
+    "pattern": "Intervals: sort + merge + sum",
+    "function": "total_compute_time",
+    "starter": "def total_compute_time(windows):\n    # windows is a list of [start, end]\n    pass\n",
+    "prompt": "Given compute windows [start, end], return the total active compute time after merging overlapping or touching intervals. Do not double-count overlapping compute time."
+  },
+  {
+    "slug": "screen_manager",
+    "title": "Screen Manager",
+    "track": "Custom Boltz",
+    "difficulty": "Medium",
+    "pattern": "Class design / state machine",
+    "function": "ScreenManager",
+    "starter": "class ScreenManager:\n    def __init__(self):\n        pass\n\n    def start(self, screen_id):\n        pass\n\n    def pause(self, screen_id):\n        pass\n\n    def resume(self, screen_id):\n        pass\n\n    def complete(self, screen_id):\n        pass\n\n    def stop(self, screen_id):\n        pass\n\n    def status_counts(self):\n        pass\n",
+    "prompt": "Implement a manager for virtual screening jobs. start creates a RUNNING screen. pause only works on RUNNING. resume only works on PAUSED. complete only works on RUNNING. stop works on RUNNING or PAUSED. Completed/stopped screens cannot change. Invalid operations return False; valid operations return True. status_counts returns a dict of status counts."
+  },
+  {
+    "slug": "impacted_workflow_nodes",
+    "title": "Impacted Workflow Nodes",
+    "track": "Custom Boltz",
+    "difficulty": "Medium",
+    "pattern": "Graph traversal: BFS / DFS",
+    "function": "impacted_workflow_nodes",
+    "starter": "def impacted_workflow_nodes(graph, changed_node):\n    # Return all downstream nodes impacted by changed_node\n    pass\n",
+    "prompt": "Given a directed dependency graph and a changed node, return all downstream nodes impacted by that change. Do not include the changed node itself. Avoid infinite loops if cycles exist."
+  },
+  {
+    "slug": "count_candidates_above_threshold",
+    "title": "Count Candidates Above Threshold",
+    "track": "Custom Boltz",
+    "difficulty": "Easy/Medium",
+    "pattern": "Binary search",
+    "function": "count_candidates_above_threshold",
+    "starter": "def count_candidates_above_threshold(scores, threshold):\n    # scores is sorted descending\n    pass\n",
+    "prompt": "Given scores sorted in descending order, return how many scores are greater than or equal to threshold. Aim for O(log n)."
+  },
+  {
+    "slug": "mock_interview_combo",
+    "title": "Mock Interview Combo: Best Candidates",
+    "track": "Custom Boltz",
+    "difficulty": "Medium",
+    "pattern": "Deduping + filtering + sorting",
+    "function": "best_candidates",
+    "starter": "def best_candidates(results, min_score, k):\n    # Deduplicate by candidate_id, filter, sort, and return IDs\n    pass\n",
+    "prompt": "Given model results, deduplicate by candidate_id keeping the best result. Filter to score >= min_score. Return up to k candidate IDs sorted by descending score, then ascending created_at."
+  },
+  {
+    "slug": "top_k_frequent_words",
+    "title": "Top K Frequent Words",
+    "track": "General",
+    "difficulty": "Medium",
+    "pattern": "Hash map + sort / heap with lexicographical order",
+    "function": "top_k_frequent_words",
+    "starter": "def top_k_frequent_words(words, k):\n    # Return the k most frequent words sorted by descending frequency and lexicographically ascending when frequencies tie\n    pass\n",
+    "prompt": "Given a list of words and an integer k, return the k most frequent words. Words should be ordered by descending frequency and lexicographically ascending when frequencies tie."
+  },
+  {
+    "slug": "min_meeting_rooms",
+    "title": "Minimum Meeting Rooms",
+    "track": "General",
+    "difficulty": "Medium",
+    "pattern": "Sorting + min-heap",
+    "function": "min_meeting_rooms",
+    "starter": "def min_meeting_rooms(intervals):\n    # Given meeting intervals [start, end], return the minimum number of rooms required to schedule all meetings without overlap\n    pass\n",
+    "prompt": "You are given an array of meeting time intervals where intervals[i] = [start_i, end_i]. Return the minimum number of meeting rooms required so that no two meetings overlap."
+  },
+  {
+    "slug": "lru_cache",
+    "title": "LRU Cache",
+    "track": "General",
+    "difficulty": "Medium",
+    "pattern": "Hash map + doubly linked list",
+    "function": "lru_cache",
+    "starter": "class LRUCache:\n    def __init__(self, capacity):\n        # Initialize your data structure here\n        pass\n\n    def get(self, key):\n        # Return the value of the key if it exists, otherwise return -1\n        pass\n\n    def put(self, key, value):\n        # Update the value of the key if present, or insert the key if not present. Evict the least recently used key if capacity exceeded\n        pass\n\n\ndef lru_cache(operations):\n    \"\"\"\n    operations is a list of lists where the first element is [\"LRUCache\", capacity] to create the cache.\n    Subsequent elements are [\"put\", key, value] or [\"get\", key].\n    Return a list of outputs corresponding to each operation (use None for puts and the return value for gets).\n    \"\"\"\n    pass\n",
+    "prompt": "Design a data structure that follows the constraints of a Least Recently Used (LRU) cache. Implement a class LRUCache with a constructor accepting the capacity. The get(key) method returns the value of the key if it exists, otherwise -1. The put(key, value) method updates or inserts a key-value pair. When the cache reaches capacity, it should invalidate and remove the least recently used key before inserting a new item. Both get and put operations must run in average O(1) time. Implement a helper function lru_cache that takes a list of operations where the first operation initializes the cache with a capacity and subsequent operations are puts or gets; it should return a list of results where puts return None and gets return the retrieved value."
+  }
+]

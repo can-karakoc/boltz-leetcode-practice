@@ -1,0 +1,113 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #0f1117; color: #e7eaf0; }
+.app { display: flex; height: 100vh; }
+.sidebar { width: 285px; border-right: 1px solid #2a2f3a; padding: 18px; background: #121621; overflow-y: auto; }
+.brand { font-weight: 800; font-size: 20px; margin-bottom: 4px; }
+.sub { color: #9ca3af; font-size: 13px; margin-bottom: 20px; }
+.problem { padding: 12px; border: 1px solid #2a2f3a; border-radius: 10px; margin-bottom: 10px; cursor: pointer; background: #161b27; }
+.problem:hover { background: #1e2533; }
+.problem.active { border-color: #7c8cff; background: #202842; }
+.problem-title { font-weight: 700; font-size: 14px; }
+.problem-meta { color: #a7adbb; font-size: 12px; margin-top: 4px; }
+.main { flex: 1; display: grid; grid-template-columns: 42% 58%; min-width: 0; }
+.prompt-pane { padding: 24px; border-right: 1px solid #2a2f3a; overflow-y: auto; }
+.code-pane { display: flex; flex-direction: column; min-width: 0; }
+h1 { margin: 6px 0 12px; font-size: 28px; }
+h3 { margin-top: 24px; margin-bottom: 8px; }
+p, li { line-height: 1.55; color: #d2d6df; }
+.meta { color: #a7adbb; font-size: 13px; font-weight: 700; }
+.badges { display: flex; gap: 8px; flex-wrap: wrap; }
+.badges span { background: #22293a; color: #d9def0; border: 1px solid #31394c; border-radius: 999px; padding: 5px 10px; font-size: 12px; }
+.hint { margin-top: 20px; padding: 12px; background: #181f2f; border: 1px solid #31394c; border-radius: 10px; color: #b8c0d4; font-size: 13px; }
+.toolbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 14px; border-bottom: 1px solid #2a2f3a; background: #121621; }
+.toolbar-left { display: flex; gap: 8px; flex-wrap: wrap; }
+.editor-status { display: flex; gap: 8px; align-items: center; white-space: nowrap; }
+.editor-status span { border: 1px solid #31394c; background: #181f2f; color: #b8c0d4; border-radius: 999px; padding: 6px 10px; font-size: 12px; font-weight: 700; }
+#languageBadge { color: #9ef0c8; }
+button { border: 1px solid #394156; background: #20283a; color: #eef1f7; border-radius: 8px; padding: 9px 12px; cursor: pointer; font-weight: 700; }
+button:hover { background: #2a344c; }
+button:disabled { opacity: 0.55; cursor: not-allowed; }
+button.primary { background: #5967ff; border-color: #5967ff; }
+.editor-shell { position: relative; flex: 1; min-height: 0; background: #0b0e14; overflow: hidden; }
+#lineNumbers, #highlight, #editor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: 0;
+  border: 0;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  overflow: auto;
+  font-family: "SFMono-Regular", Consolas, Menlo, monospace;
+  font-size: 14px;
+  line-height: 1.55;
+  tab-size: 4;
+  white-space: pre;
+}
+#lineNumbers {
+  left: 0;
+  width: 56px;
+  padding-left: 12px;
+  padding-right: 10px;
+  text-align: right;
+  color: #556174;
+  background: #090c12;
+  border-right: 1px solid #1f2633;
+  user-select: none;
+  pointer-events: none;
+}
+#highlight, #editor {
+  left: 56px;
+  right: 0;
+  width: calc(100% - 56px);
+  height: 100%;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+#highlight { pointer-events: none; background: #0b0e14; color: #eef1f7; }
+#editor { resize: none; outline: none; background: transparent; color: transparent; caret-color: #ffffff; -webkit-text-fill-color: transparent; }
+#editor::selection { background: rgba(124, 140, 255, 0.35); }
+/*
+  The editor highlights the current cursor line by wrapping it in a span with the
+  `current-line` class. Previously this element used a negative left margin to
+  stretch the highlight into the left padding area, which caused indentation
+  misalignment and inserted a spurious extra blank space when clicking on a
+  line. To improve the visual alignment we remove the negative margin and
+  instead rely on the existing padding on the parent container to position
+  the highlighted text. The span is kept as a block‐level element so the
+  background colour spans the full line width. Padding is applied on the
+  left and right to match the surrounding code lines. */
+.current-line {
+  display: block;
+  background: rgba(124, 140, 255, 0.08);
+  margin-left: 0;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+.tok-keyword { color: #ff7ab2; font-weight: 700; }
+.tok-control { color: #c792ea; font-weight: 700; }
+.tok-builtin { color: #82aaff; }
+.tok-function { color: #82d7ff; font-weight: 700; }
+.tok-class { color: #ffcb6b; font-weight: 700; }
+.tok-string { color: #c3e88d; }
+.tok-fstring { color: #addb67; }
+.tok-number { color: #f78c6c; }
+.tok-comment { color: #63718b; font-style: italic; }
+.tok-self { color: #ffcb6b; }
+.tok-decorator { color: #89ddff; }
+.tok-operator { color: #89ddff; }
+.tok-bracket { color: #ffd580; }
+.tok-colon { color: #89ddff; }
+.results { height: 260px; border-top: 1px solid #2a2f3a; background: #111722; padding: 14px; overflow-y: auto; font-family: "SFMono-Regular", Consolas, Menlo, monospace; font-size: 13px; white-space: pre-wrap; }
+.pass { color: #6ee7a8; }
+.fail { color: #ff8a8a; }
+.summary { margin-bottom: 10px; font-weight: 800; }
+code { background: #0b0e14; padding: 2px 4px; border-radius: 4px; }
+@media (max-width: 900px) {
+  .app { flex-direction: column; height: auto; }
+  .sidebar { width: 100%; height: auto; }
+  .main { grid-template-columns: 1fr; }
+  .prompt-pane { border-right: 0; border-bottom: 1px solid #2a2f3a; }
+  .editor-shell { height: 520px; flex: none; }
+  .toolbar { align-items: flex-start; flex-direction: column; }
+}
